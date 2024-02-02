@@ -1,5 +1,5 @@
 # Ex.1
-```
+```sql
 SELECT pizza_name, price, name, visit_date FROM menu,
 pizzeria, person_visits
 WHERE person_id = '3' AND price BETWEEN 800 AND 1000
@@ -7,7 +7,7 @@ ORDER BY pizza_name, price DESC, name
 ```
 ![image](https://github.com/NikitaChernikov04/SQL/assets/113566014/c7a7ab3e-37cd-47a4-ad2d-823f1b61e95e)
 # Ex.2
-```
+```sql
 SELECT menu.id FROM menu
 WHERE menu.id NOT IN (SELECT DISTINCT menu_id FROM person_order)
 ORDER BY menu.id
@@ -15,7 +15,7 @@ ORDER BY menu.id
 ![image](https://github.com/NikitaChernikov04/SQL/assets/113566014/12673db4-e71f-4876-94cc-1768152e2a6e)
 
 # Ex.3
-```
+```sql
 SELECT DISTINCT id FROM menu
 EXCEPT
 SELECT DISTINCT menu_id FROM person_order
@@ -23,7 +23,7 @@ SELECT DISTINCT menu_id FROM person_order
 ![image](https://github.com/NikitaChernikov04/SQL/assets/113566014/e2c545d3-52a7-43ca-97a8-73fa1d70890f)
 
 # Ex.4
-```
+```sql
 WITH female AS (
 	SELECT pi.name FROM pizzeria pi
 	JOIN person_visits pv ON pv.pizzeria_id = pi.id
