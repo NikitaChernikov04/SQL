@@ -7,8 +7,22 @@ WHERE products.category != 'Clothing'
 ```
 
 # 4
+## Самая высокая цена
 ```sql
- 
+SELECT category, avg(price) 
+FROM products
+GROUP BY category
+ORDER BY avg DESC   
+LIMIT 1;
+```
+## Самая низкая цена 
+```sql
+SELECT category, avg(price) 
+FROM products
+GROUP BY category
+ORDER BY avg ASC 
+LIMIT 1;
+```
 
 # 5
 ```sql
