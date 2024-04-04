@@ -33,7 +33,14 @@ $$ LANGUAGE plpgsql;
 ```
 ![image](https://github.com/NikitaChernikov04/SQL/assets/113566014/144c67ba-c6f2-48c5-9d65-e08834dce4af) ![image](https://github.com/NikitaChernikov04/SQL/assets/113566014/fbb7190c-8972-4c38-98da-c62d01e1da5c)
 
-## №178 
+## №178 Rank Scores
+
+```sql
+SELECT score, DENSE_RANK() OVER(ORDER BY score DESC) as rank FROM Scores
+```
+
+![image](https://github.com/NikitaChernikov04/SQL/assets/113566014/9f8c0c27-8e1d-4ae4-b731-dc26480791cc)
+
 
 
 
