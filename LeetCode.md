@@ -42,10 +42,62 @@ SELECT score, DENSE_RANK() OVER(ORDER BY score DESC) as rank FROM Scores
 ![image](https://github.com/NikitaChernikov04/SQL/assets/113566014/9f8c0c27-8e1d-4ae4-b731-dc26480791cc)
 
 
+## №181 Employees Earning More Than Their Managers
+
+```sql
+SELECT name AS "Employee" FROM Employee e
+WHERE (e.managerId IS NOT NULL) 
+AND (e.salary > (SELECT salary FROM Employee WHERE Employee.id = e.managerId))
+```
+
+![image](https://github.com/NikitaChernikov04/SQL/assets/113566014/89df8e72-5df8-4cc3-868f-0fd574f09b9e)
 
 
+##  №182 Duplicate Emails
+
+```sql
+SELECT email FROM person
+GROUP BY email
+HAVING COUNT(email) > 1;
+```
+
+![image](https://github.com/NikitaChernikov04/SQL/assets/113566014/87045f42-78be-4e08-a6ca-52294127d07a)
 
 
+## №183 Customers Who Never Order
+
+```sql
+SELECT cust.name AS "Customers" FROM Customers cust
+LEFT JOIN Orders ord ON cust.id = ord.customerID
+WHERE ord.customerID IS NULL;
+```
+
+![image](https://github.com/NikitaChernikov04/SQL/assets/113566014/aacceeda-630c-4cad-9e30-849e14c28a23)
 
 
+## №184 Department Highest Salary
+
+```sql
+SELECT d.name AS Department, e.name AS Employee, e.salary AS Salary
+FROM (
+    SELECT departmentId, MAX(salary) AS max_salary
+    FROM Employee
+    GROUP BY departmentId
+) AS max_salaries
+JOIN Employee e ON e.departmentId = max_salaries.departmentId AND e.salary = max_salaries.max_salary
+JOIN Department d ON e.departmentId = d.id;
+```
+
+![image](https://github.com/NikitaChernikov04/SQL/assets/113566014/1ce6184a-26a3-4bac-928e-6fdcbb2a91ee)
+
+
+## №511 Game Play Analysis I
+
+```sql
+SELECT player_id, MIN(event_date) AS first_login FROM Activity
+GROUP BY player_id
+ORDER BY player_id;
+```
+
+![image](https://github.com/NikitaChernikov04/SQL/assets/113566014/defd7a0e-b756-443c-8294-75958f325b60)
 
