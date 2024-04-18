@@ -101,3 +101,16 @@ ORDER BY player_id;
 
 ![image](https://github.com/NikitaChernikov04/SQL/assets/113566014/defd7a0e-b756-443c-8294-75958f325b60)
 
+
+## №570 Managers with at Least 5 Direct Reports
+
+```sql
+SELECT e1.name
+FROM Employee AS e1
+INNER JOIN Employee AS e2
+ON e1.id = e2.managerId
+GROUP BY e2.managerId, e1.name
+HAVING COUNT(e2.managerId) >= 5
+```
+
+![image](https://github.com/NikitaChernikov04/SQL/assets/113566014/9029b311-89a5-4b19-9d79-8a9f3277f8fb)
